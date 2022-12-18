@@ -18,5 +18,8 @@
   "bugs": {
     "url": "https://github.com/fairyaksh/reading_list/issues"
   },
-  "homepage": "https://github.com/fairyaksh/reading_list#readme"
+  "homepage": "https://github.com/fairyaksh/reading_list#readme",
+  "dependencies": {
+    "dotenv": "^16.0.3"
+  }
 }
