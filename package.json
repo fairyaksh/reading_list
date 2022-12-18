@@ -2,7 +2,10 @@
   "name": "reading_list",
   "version": "1.0.0",
   "description": "nodejs CLI application using Google Books API",
-  "main": "index.js",
+  "main": "./bin/index.js",
+  "bin": {
+    "tcli": "./bin/index.js"
+  },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -10,7 +13,7 @@
     "type": "git",
     "url": "git+https://github.com/fairyaksh/reading_list.git"
   },
-  "author": "",
+  "author": "Akshaya",
   "license": "ISC",
   "bugs": {
     "url": "https://github.com/fairyaksh/reading_list/issues"
