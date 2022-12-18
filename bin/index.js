@@ -1,3 +1,4 @@
 #! /usr/bin/env node
 
-console.log('Hello world, the CLI is working');
+import * as dotenv from 'dotenv';
+dotenv.config()
