@@ -8,12 +8,12 @@ import inquirer from "inquirer";
 import clear from 'clear';
 dotenv.config()
 
-const searchBookFromUserInput = (userInput) => {
+const searchBookFromUserInput = async (userInput) => {
     const getUrl = `https://www.googleapis.com/books/v1/volumes?q=${userInput}&key=${process.env.API_KEY}`;
     try {
-    const res = fetch(getUrl);
+        const res = await fetch(getUrl);
     if (res.status === 200) {
-        const data = res.json();
+            const data = await res.json();
         return data;
     } else {
             console.log(res.status);
@@ -61,12 +61,13 @@ inquirer
             }
           ])
           .then((answers) => {
-            const searchTerm = answers.search;
-            const searchTermObject = searchBookFromUserInput(searchTerm);
+            const searchTerm = answers.search
+            const searchTermObject = searchBookFromUserInput(searchTerm)
             searchTermObject
                 .then(bookObj => getAllBooksDetails(bookObj))
                 .then(data => {
-                    const firstFiveBooks = getFirstFiveBooks(data);
+                    const firstFiveBooks = getFirstFiveBooks(data)
+                    return firstFiveBooks;
                 })
           })
     })
