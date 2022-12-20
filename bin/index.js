@@ -46,13 +46,16 @@ const formatBooksInfo = (property) => {
         const title = x.title;
         const publisher = x.publisher;
         
-        const authorFormatted = _ => {
-            if (author.length <= 1) {
+        const authorEdgeCases = _ => {
+            if (author !== undefined && author.length <= 1) {
                 return author = author.join(", ");
-            } else {
+            } else if (author !== undefined && author.length > 2) {
                 const lastItem = author.pop();
-                const newStr = author.join(", ")+" and "+ lastItem;
+                const newAuthor = author.join(", ");
+                const newStr = `Written by ${newAuthor} and ${lastItem}`;
                 return newStr
+            } else {
+                return "Author: Unknown";
 }
 }
 
@@ -64,7 +67,7 @@ const formatBooksInfo = (property) => {
             }
         }
 
-        const formattedStr = `○ "${title}". Written by ${authorFormatted()}. ${(checkPublisherExists)}.`;
+        const formattedStr = `○ "${title}". ${authorEdgeCases()}. ${(checkPublisherExists())}.`;
         return formattedStr
     });
 }
