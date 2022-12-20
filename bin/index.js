@@ -66,9 +66,6 @@ inquirer
             const searchTermObject = searchBookFromUserInput(searchTerm)
             searchTermObject
                 .then(bookObj => getAllBooksDetails(bookObj))
-                .then(data => {
-                    const firstFiveBooks = getFirstFiveBooks(data)
-                    return firstFiveBooks;
+                .then(data => console.log(getFirstFiveBooks(data)))
                 })
           })
-});
