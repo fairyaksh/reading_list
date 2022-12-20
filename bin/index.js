@@ -22,3 +22,12 @@ const searchBookFromUserInput = (userInput) => {
 }
 }
 }
+
+inquirer
+    .prompt([
+    {
+        type: "input",
+        name: "name",
+        message: "Please enter your name 👉"
+    }
+    ])
