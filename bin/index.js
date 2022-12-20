@@ -34,4 +34,11 @@ inquirer
     .then((answers) => {
         clear();
         userName = answers.name;
+        inquirer.prompt([
+            {
+                type: "input",
+                name: "search",
+                message: `👋 Hi ${answers.name}! Please provide a word related to the book you are looking for:`
+            }
+          ])
     })
