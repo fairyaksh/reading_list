@@ -5,7 +5,7 @@ process.removeAllListeners("warning");
 
 import * as dotenv from "dotenv";
 import inquirer from "inquirer";
-import clear from 'clear';
+import clear from "clear";
 import fs from "fs";
 
 dotenv.config()
@@ -45,10 +45,10 @@ const getFirstFiveBooks = (book_details) => {
 const formatBooksInfo = (property) => {
     return property.map(x => {
         let author = x.author;
-        let checkAuthor = x.hasOwnProperty('author');
+        let checkAuthor = x.hasOwnProperty("author");
         const title = x.title;
         const publisher = x.publisher;
-        let checkPublisher = x.hasOwnProperty('publisher');
+        let checkPublisher = x.hasOwnProperty("publisher");
         
         const authorEdgeCases = _ => {
             if (checkAuthor == false || author == undefined) {
@@ -59,7 +59,7 @@ const formatBooksInfo = (property) => {
                 const lastItem = author.pop();
                 const newAuthor = author.join(", ");
                 const newStr = `Written by ${newAuthor} and ${lastItem}`;
-                return newStr
+                return newStr;
 }
 }
 
@@ -72,7 +72,7 @@ const formatBooksInfo = (property) => {
         }
 
         const formattedStr = `○ "${title}". ${authorEdgeCases()}. ${(checkPublisherExists())}.`;
-        return formattedStr
+        return formattedStr;
     });
 }
 
@@ -83,7 +83,7 @@ const createListFile = (usersName, usersChoice) => {
             console.log("Something went wrong! 💥 Please try again.");            
         }
         else {
-            console.log("Success!✨ You can now view all the saved books in your very own reading list. ")
+            console.log("Success!✨ You can now view all the saved books in your very own reading list. ");
         }
     })
 }
@@ -108,13 +108,15 @@ inquirer
             }
           ])
           .then((answers) => {
-            const searchTerm = answers.search
-            const searchTermObject = searchBookFromUserInput(searchTerm)
+            clear();
+            const searchTerm = answers.search;
+            const searchTermObject = searchBookFromUserInput(searchTerm);
             searchTermObject
                 .then(bookObj => getAllBooksDetails(bookObj))
                 .then(data => getFirstFiveBooks(data))
             .then((response) => {
-                const formattedStr = formatBooksInfo(response)
+                    clear();
+                    const formattedStr = formatBooksInfo(response);
                     inquirer.prompt([
                         {
                             name: "selection",
@@ -124,6 +126,7 @@ inquirer
                         }
                     ])
                     .then(choices => {
+                        clear();
                         const userChoice = choices.selection; 
                         createListFile(userName, userChoice);
                     })
