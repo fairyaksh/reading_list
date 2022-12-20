@@ -100,7 +100,6 @@ inquirer
                 .then(bookObj => getAllBooksDetails(bookObj))
                 .then(data => getFirstFiveBooks(data))
             .then((response) => {
-                    console.log("res", response)
                 const formattedStr = formatBooksInfo(response)
                     inquirer.prompt([
                         {
@@ -110,7 +109,10 @@ inquirer
                             choices: formattedStr
                         }
                     ])
+                    .then(choices => {
+                        const userChoice = choices.selection; 
+                        console.log("hello world", userName, userChoice)
+                    })
                 })
             })
-
           })
