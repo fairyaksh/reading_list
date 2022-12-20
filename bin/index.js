@@ -55,7 +55,16 @@ const formatBooksInfo = (property) => {
                 return newStr
 }
 }
-        const formattedStr = `○ "${title}". Written by ${authorFormatted()}. ${publisher()}.`;
+
+        const checkPublisherExists = _ => {
+            if (publisher == undefined) {
+                return "Publishing company: Unknown";
+            } else {
+                return `Published by ${publisher}`;
+            }
+        }
+
+        const formattedStr = `○ "${title}". Written by ${authorFormatted()}. ${(checkPublisherExists)}.`;
         return formattedStr
     });
 }
@@ -88,6 +97,7 @@ inquirer
                 })
             .then((response) => {
                 const formattedStr = formatBooksInfo(response)
+                console.log(formattedStr)
             })
 
           })
