@@ -53,7 +53,8 @@ inquirer
     .then((answers) => {
         clear();
         userName = answers.name;
-        inquirer.prompt([
+        inquirer
+            .prompt([
             {
                 type: "input",
                 name: "search",
@@ -70,4 +71,4 @@ inquirer
                     return firstFiveBooks;
                 })
           })
-    })
+});
