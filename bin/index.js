@@ -1,4 +1,5 @@
 #! /usr/bin/env node
 
-import * as dotenv from 'dotenv';
+import inquirer from "inquirer";
+import clear from 'clear';
 dotenv.config()
