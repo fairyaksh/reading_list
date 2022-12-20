@@ -39,7 +39,25 @@ const getFirstFiveBooks = (book_details) => {
     const firstFive = book_details.slice(0, 5);
     return firstFive;
 }
+
+const formatBooksInfo = (property) => {
+    return property.map(x => {
+        let author = x.author;
+        const title = x.title;
+        const publisher = x.publisher;
+        
+        const authorFormatted = _ => {
+            if (author.length <= 1) {
+                return author = author.join(", ");
+            } else {
+                const lastItem = author.pop();
+                const newStr = author.join(", ")+" and "+ lastItem;
+                return newStr
 }
+}
+        const formattedStr = `○ "${title}". Written by ${authorFormatted()}. ${publisher()}.`;
+        return formattedStr
+    });
 }
 
 inquirer
@@ -66,6 +84,10 @@ inquirer
             const searchTermObject = searchBookFromUserInput(searchTerm)
             searchTermObject
                 .then(bookObj => getAllBooksDetails(bookObj))
-                .then(data => console.log(getFirstFiveBooks(data)))
+                .then(data => getFirstFiveBooks(data))
                 })
+            .then((response) => {
+                const formattedStr = formatBooksInfo(res)
+            })
+
           })
