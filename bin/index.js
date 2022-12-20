@@ -74,6 +74,18 @@ const formatBooksInfo = (property) => {
     });
 }
 
+const createListFile = (usersName, usersChoice) => {
+    fileName = `${usersName}'s reading list.txt`;
+    fs.appendFile(fileName, usersChoice + "\n", {flag: "a+"}, (err) => {
+        if (err) {
+            console.log("Something went wrong! 💥 Please try again.");            
+        }
+        else {
+            console.log("Success!✨ You can now view all the saved books in your very own reading list. ")
+        }
+    })
+}
+
 inquirer
     .prompt([
     {
@@ -111,7 +123,7 @@ inquirer
                     ])
                     .then(choices => {
                         const userChoice = choices.selection; 
-                        console.log("hello world", userName, userChoice)
+                        createListFile(userName, userChoice);
                     })
                 })
             })
