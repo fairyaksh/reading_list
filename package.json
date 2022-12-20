@@ -1,5 +1,6 @@
 {
   "name": "reading_list",
+  "type": "module",
   "version": "1.0.0",
   "description": "nodejs CLI application using Google Books API",
   "main": "./bin/index.js",
@@ -20,6 +21,8 @@
   },
   "homepage": "https://github.com/fairyaksh/reading_list#readme",
   "dependencies": {
-    "dotenv": "^16.0.3"
+    "clear": "^0.1.0",
+    "dotenv": "^16.0.3",
+    "inquirer": "^9.1.4"
   }
 }
