@@ -94,10 +94,11 @@ inquirer
             searchTermObject
                 .then(bookObj => getAllBooksDetails(bookObj))
                 .then(data => getFirstFiveBooks(data))
-                })
             .then((response) => {
+                    console.log("res", response)
                 const formattedStr = formatBooksInfo(response)
                 console.log(formattedStr)
+                })
             })
 
           })
