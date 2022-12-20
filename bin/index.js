@@ -2,6 +2,8 @@
 
 // removes warning: (https://github.com/netlify/cli/issues/4608#issuecomment-1223696635)
 process.removeAllListeners("warning"); 
+
+import * as dotenv from "dotenv";
 import inquirer from "inquirer";
 import clear from 'clear';
 dotenv.config()
@@ -20,6 +22,7 @@ const searchBookFromUserInput = (userInput) => {
         return console.log(error);
     }
 }
+
 const getAllBooksDetails = (data) => {
     const dataItems = data["items"];
     const bookDetails = dataItems.map(items => {
