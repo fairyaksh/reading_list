@@ -14,12 +14,12 @@ const searchBookFromUserInput = async (userInput) => {
     const getUrl = `https://www.googleapis.com/books/v1/volumes?q=${userInput}&key=${process.env.API_KEY}`;
     try {
         const res = await fetch(getUrl);
-    if (res.status === 200) {
+        if (res.status === 200) {
             const data = await res.json();
-        return data;
-    } else {
+            return data;
+        } else {
             console.log(res.status);
-    }
+        }
     } catch (error) {
         return console.log(error);
     }
@@ -49,7 +49,7 @@ const formatBooksInfo = (property) => {
         const title = x.title;
         const publisher = x.publisher;
         let checkPublisher = x.hasOwnProperty("publisher");
-        
+
         const authorEdgeCases = _ => {
             if (checkAuthor == false || author == undefined) {
                 return "Author: Unknown";
@@ -60,8 +60,8 @@ const formatBooksInfo = (property) => {
                 const newAuthor = author.join(", ");
                 const newStr = `Written by ${newAuthor} and ${lastItem}`;
                 return newStr;
-}
-}
+            }
+        }
 
         const checkPublisherExists = _ => {
             if (checkPublisher == false || publisher == null) {
@@ -106,15 +106,15 @@ inquirer
                 name: "search",
                 message: `👋 Hi ${userName}! Please provide a word related to the book you are looking for:`
             }
-          ])
-          .then((answers) => {
+            ])
+        .then((answers) => {
             clear();
             const searchTerm = answers.search;
             const searchTermObject = searchBookFromUserInput(searchTerm);
             searchTermObject
                 .then(bookObj => getAllBooksDetails(bookObj))
                 .then(data => getFirstFiveBooks(data))
-            .then((response) => {
+                .then((response) => {
                     clear();
                     const formattedStr = formatBooksInfo(response);
                     inquirer.prompt([
@@ -127,9 +127,9 @@ inquirer
                     ])
                     .then(choices => {
                         clear();
-                        const userChoice = choices.selection; 
+                        const userChoice = choices.selection;
                         createListFile(userName, userChoice);
                     })
                 })
             })
-          })
+        })
