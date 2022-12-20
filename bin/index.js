@@ -31,3 +31,7 @@ inquirer
         message: "Please enter your name 👉"
     }
     ])
+    .then((answers) => {
+        clear();
+        userName = answers.name;
+    })
