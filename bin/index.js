@@ -43,24 +43,26 @@ const getFirstFiveBooks = (book_details) => {
 const formatBooksInfo = (property) => {
     return property.map(x => {
         let author = x.author;
+        let checkAuthor = x.hasOwnProperty('author');
         const title = x.title;
         const publisher = x.publisher;
+        let checkPublisher = x.hasOwnProperty('publisher');
         
         const authorEdgeCases = _ => {
-            if (author !== undefined && author.length <= 1) {
+            if (checkAuthor == false || author == undefined) {
+                return "Author: Unknown";
+            } else if (author.length <= 1) {
                 return author = author.join(", ");
-            } else if (author !== undefined && author.length > 2) {
+            } else {
                 const lastItem = author.pop();
                 const newAuthor = author.join(", ");
                 const newStr = `Written by ${newAuthor} and ${lastItem}`;
                 return newStr
-            } else {
-                return "Author: Unknown";
 }
 }
 
         const checkPublisherExists = _ => {
-            if (publisher == undefined) {
+            if (checkPublisher == false || publisher == null) {
                 return "Publishing company: Unknown";
             } else {
                 return `Published by ${publisher}`;
