@@ -100,7 +100,14 @@ inquirer
             .then((response) => {
                     console.log("res", response)
                 const formattedStr = formatBooksInfo(response)
-                console.log(formattedStr)
+                    inquirer.prompt([
+                        {
+                            name: "selection",
+                            type: "list",
+                            message: `Here are the 5 books we found related to your search of "${searchTerm}". \n Please select one to save to your reading list:`,
+                            choices: formattedStr
+                        }
+                    ])
                 })
             })
 
