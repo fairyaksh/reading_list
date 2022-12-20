@@ -77,7 +77,7 @@ const formatBooksInfo = (property) => {
 }
 
 const createListFile = (usersName, usersChoice) => {
-    fileName = `${usersName}'s reading list.txt`;
+    const fileName = `${usersName}'s reading list.txt`;
     fs.appendFile(fileName, usersChoice + "\n", {flag: "a+"}, (err) => {
         if (err) {
             console.log("Something went wrong! 💥 Please try again.");            
