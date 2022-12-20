@@ -8,4 +8,12 @@ dotenv.config()
 
 const searchBookFromUserInput = (userInput) => {
     const getUrl = `https://www.googleapis.com/books/v1/volumes?q=${userInput}&key=${process.env.API_KEY}`;
+    const res = fetch(getUrl);
+    if (res.status === 200) {
+        const data = res.json();
+        return data;
+    } else {
+        console.log(res.status)
+    }
+}
 }
