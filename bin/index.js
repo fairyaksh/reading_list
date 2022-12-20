@@ -87,7 +87,7 @@ inquirer
                 .then(data => getFirstFiveBooks(data))
                 })
             .then((response) => {
-                const formattedStr = formatBooksInfo(res)
+                const formattedStr = formatBooksInfo(response)
             })
 
           })
