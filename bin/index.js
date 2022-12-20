@@ -6,6 +6,8 @@ process.removeAllListeners("warning");
 import * as dotenv from "dotenv";
 import inquirer from "inquirer";
 import clear from 'clear';
+import fs from "fs";
+
 dotenv.config()
 
 const searchBookFromUserInput = async (userInput) => {
