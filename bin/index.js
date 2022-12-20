@@ -14,7 +14,7 @@ const searchBookFromUserInput = (userInput) => {
         const data = res.json();
         return data;
     } else {
-        console.log(res.status)
+            console.log(res.status);
     }
     } catch (error) {
         return console.log(error);
@@ -42,7 +42,9 @@ inquirer
             }
           ])
           .then((answers) => {
-            const searchTerm = answers.search
-            const searchTermObject = searchBookFromUserInput(searchTerm)
+            const searchTerm = answers.search;
+            const searchTermObject = searchBookFromUserInput(searchTerm);
+            searchTermObject
+                .then(bookObj => console.log(bookObj)) // all books returned
           })
     })
