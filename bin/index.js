@@ -31,6 +31,11 @@ const getAllBooksDetails = (data) => {
     })
     return bookDetails;
 }
+
+const getFirstFiveBooks = (book_details) => {
+    const firstFive = book_details.slice(0, 5);
+    return firstFive;
+}
 }
 }
 
@@ -58,7 +63,7 @@ inquirer
             searchTermObject
                 .then(bookObj => getAllBooksDetails(bookObj))
                 .then(data => {
-                    const firstFiveBooks = console.log(data);
+                    const firstFiveBooks = getFirstFiveBooks(data);
                 })
           })
     })
