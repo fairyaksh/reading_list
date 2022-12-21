@@ -37,12 +37,12 @@ const getAllBooksDetails = (data) => {
     return bookDetails;
 }
 
-export default getFirstFiveBooks = (book_details) => {
+export const getFirstFiveBooks = (book_details) => {
     const firstFive = book_details.slice(0, 5);
     return firstFive;
 }
 
-const formatBooksInfo = (property) => {
+export const formatBooksInfo = (property) => {
     return property.map(x => {
         let author = x.author;
         let checkAuthor = x.hasOwnProperty("author");
@@ -133,5 +133,3 @@ inquirer
                 })
             })
         })
-
-// export default { getFirstFiveBooks };
