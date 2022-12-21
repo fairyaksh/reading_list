@@ -5,7 +5,7 @@
   "description": "nodejs CLI application using Google Books API",
   "main": "./bin/index.js",
   "bin": {
-    "cli run": "./bin/index.js"
+    "tcli": "./bin/index.js"
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"

@@ -20,9 +20,9 @@
 - Ensure all required npm packages are installed using `npm install` or `npm i`
 - Create a Google Cloud Platform account and enable Google Books API, collect your API key credentials [(Learn more).](https://developers.google.com/books/docs/v1/using#APIKey)
 - Create a `.env` file and store your API Key inside it as an environmental variable [(Learn more).](https://www.freecodecamp.org/news/how-to-use-node-environment-variables-with-a-dotenv-file-for-node-js-and-npm/)
-- Run `cli run` into your terminal to start the CLI application
+- Run `tcli` into your terminal to start the CLI application
 
-## [What Is It](#description)
+## [What Is It?](#description)
 - This project is a Command Line Interface application that connects to [Google Books API](https://developers.google.com/books/docs/overview) services and searches for books given the user's search query.
 - It has been built using NodeJS and a CLI interface package named [Inquirer](https://github.com/SBoudrias/Inquirer.js).
 
