@@ -1,7 +1,7 @@
 # 💾 CLI Reading List
 
 <p>
-<img alt="1" width="400" src="./assets/1.png"/>
+<img alt="CLI Screenshot Example" width="400" src="./assets/name_prompt.png"/>
 </p>
 <p>
 
