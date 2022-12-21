@@ -8,11 +8,13 @@
     "tcli": "./bin/index.js"
   },
   "scripts": {
-    "test": "jest"
+    "test": "node --experimental-vm-modules node_modules/jest/bin/jest.js --forceExit"
   },
   "jest": {
-    "transform": {
-      "^.+\\.[t|j]sx?$": "babel-jest"
+    "testEnvironment": "jest-environment-node",
+    "transform": {},
+    "moduleNameMapper": {
+      "#(.*)": "<rootDir>/node_modules/$1"
     }
   },
   "repository": {
@@ -31,8 +33,6 @@
     "inquirer": "^9.1.4"
   },
   "devDependencies": {
-    "@babel/preset-env": "^7.20.2",
-    "babel-jest": "^29.3.1",
     "jest": "^29.3.1"
   }
 }
