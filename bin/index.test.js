@@ -1,14 +1,3 @@
-// import index from './index';
-// jest.mock('inquirer');
-
-// describe('Module test', () => {
-//     test('Confirm name input', async () => {
-//       expect.assertions(1);
-//       inquirer.prompt = jest.fn().mockResolvedValue({ name: 'Shaya'});
-//       await expect(index()).resolves.toEqual({ name: 'Shaya' });
-//     });
-//   });
-
 import { getFirstFiveBooks, formatBooksInfo } from "./index";
 
 const multipleArrOfObj = [
@@ -90,7 +79,7 @@ describe('getFirstFiveBooks', () => {
 })
 
 describe('formatBooksInfo', () => {
-    test('Function should check for input edge cases and return formatted str with properties passed as params', () => {
+    test('Check for edge cases and return a list of 5 str with properties passed as params', () => {
         expect(formatBooksInfo(fiveArrayOfObj)).toStrictEqual(formattedBooksStr);
     })
 })
