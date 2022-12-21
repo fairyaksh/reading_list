@@ -9,9 +9,9 @@
 //     });
 //   });
 
-import getFirstFiveBooks from "./index";
+import { getFirstFiveBooks, formatBooksInfo } from "./index";
 
-const sampleArrOfObj = [
+const multipleArrOfObj = [
     {
         title: 'Bass Xmas Christmas Songs',
         author: [ 'Bernd Kofler' ],
@@ -48,7 +48,7 @@ const sampleArrOfObj = [
         publisher: undefined
     }
 ]
-const expectedArrOfObj = [
+const fiveArrayOfObj = [
     {
       title: 'Bass Xmas Christmas Songs',
       author: [ 'Bernd Kofler' ],
@@ -75,12 +75,22 @@ const expectedArrOfObj = [
       publisher: 'Dramatists Play Service Inc'
     }
 ]
+const formattedBooksStr = [
+    '○ "Bass Xmas Christmas Songs". Bernd Kofler. Published by BoD – Books on Demand.',
+    '○ "The Simpsons Xmas Book". Author: Unknown. Published by Harper Perennial.',
+    '○ "Xmas". E. V. Greenelsh. Publishing company: Unknown.',
+    '○ "Fright Xmas". Alan-Bertaneisson Jones. Published by AuthorHouse.',
+    '○ "Xmas in Las Vegas". Jack Richardson. Published by Dramatists Play Service Inc.'
+]
+
 describe('getFirstFiveBooks', () => {
     test('Function should return only first five objects', () => {
-        expect(getFirstFiveBooks(sampleArrOfObj)).toStrictEqual(expectedArrOfObj);
+        expect(getFirstFiveBooks(multipleArrOfObj)).toStrictEqual(fiveArrayOfObj);
     })
-    // done();
-    // afterAll(async () =>{
-    //     await inquirer.prompt.complete();
-    // })
+})
+
+describe('formatBooksInfo', () => {
+    test('Function should check for input edge cases and return formatted str with properties passed as params', () => {
+        expect(formatBooksInfo(fiveArrayOfObj)).toStrictEqual(formattedBooksStr);
+    })
 })
