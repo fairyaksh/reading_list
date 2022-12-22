@@ -7,6 +7,8 @@ import * as dotenv from "dotenv";
 import inquirer from "inquirer";
 import clear from "clear";
 import fs from "fs";
+import chalk from 'chalk';
+import boxen from 'boxen';
 
 dotenv.config()
 
@@ -80,10 +82,12 @@ const createListFile = (usersName, usersChoice) => {
     const fileName = `${usersName}'s reading list.txt`;
     fs.appendFile(fileName, usersChoice + "\n", {flag: "a+"}, (err) => {
         if (err) {
-            console.log("Something went wrong! 💥 Please try again.");            
+            const beautified_error = boxen(chalk.bgRed("Something went wrong! 💥 Please try again."), {padding: 1, margin: 1, borderStyle: 'classic'});
+            console.log(beautified_error);            
         }
         else {
-            console.log("Success!✨ You can now view all the saved books in your very own reading list. ");
+            const beautified_success = boxen(chalk.green("Success!✨ You can now view all the saved books in your very own reading list."), {padding: 1, margin: 1, borderStyle: 'classic'});
+            console.log(beautified_success);
         }
     })
 }
