@@ -1,7 +1,7 @@
 # 💾 CLI Reading List
 
 <p>
-<img alt="CLI Screenshot Example" width="400" src="./assets/name_prompt.png"/>
+<img alt="CLI Screenshot Example" width="600" src="./assets/success_terminal.png"/>
 </p>
 <p>
 
@@ -37,6 +37,7 @@
 - I used the [Inquirer](https://github.com/SBoudrias/Inquirer.js) package as, after thorough research, it seemed to be the most commonly used and active npm package for implementing seamless CLI interaction with the user whilst allowing for the use of hierarchical prompts. 
 - I used the [dotenv](https://www.npmjs.com/package/dotenv) package to manage my environment variables, storing my API keys securely and thus allowing for authorised connection to Google Books API through [Google Cloud Platform](https://console.developers.google.com/apis).
 - I used the [clear](https://www.npmjs.com/package/clear) package to clear the terminal after each Inquirer prompt to improve the userflow of the application, making it more user-friendly.
+- I used [chalk](https://github.com/chalk/chalk) to add text styling to my console logs and then [boxen](https://github.com/sindresorhus/boxen) to style the outer box of the message in the terminal.
 
 ## [Next Steps](#review)
 I would like to discuss the changes I would make if I had more time or were to build on this application in the future:
@@ -44,32 +45,12 @@ I would like to discuss the changes I would make if I had more time or were to b
 This is to implement modularisation and keep the code clean and readable.
 - I would implement authentication through a login/password flow so that the user does not have to type their name each time they wish to search for a book. 
 This will also mean the initial prompt that asks the user their name will be conditional; only prompted if current user is not logged in. The application will keep track of the user session and store a reading list that is specific to that user's account.
-
+- I would write tests for the remaining functions in my `index.js` file that require testing fetch requests and the fs library 
 ## [Edge Cases](#cases)
 - I checked for system errors through `try, catch`, and fetch request error handling through the response `status` and error logging.
 - I handled asynchorous operations through `async, await` error handling.
 - I checked for common edge cases with the data returned from the Google Books API fetch request: checking if resolved object's property exists and if the resolved object's data type is as expected. 
 
 ## [Running Tests](#tests)
-
-<!-- 
-
-TODO: Write tests
-TODO: Beautify your messages: https://dev.to/rushankhan1/build-a-cli-with-node-js-4jbi#:~:text=Beautification%20using%20Boxen%20and%20Chalk
-
----
-TIL:
-    - can't map through objects
-    - map returns an array
-    - .splice mutates original arr; need 2nd position so splice doesn't delete items
-    - recommended to: 1. commit package/package-lock.json 2. NOT commit node_modules & .env
-    
-resources:
-https://www.reddit.com/r/learnpython/comments/6yl7l7/eli5_shebang_lines/
-https://github.com/motdotla/dotenv#how-do-i-use-dotenv-with-import
-https://rachelaemmer.medium.com/how-to-use-the-google-books-api-in-your-application-17a0ed7fa857
-https://dev.to/fayvik/building-a-book-finder-app-using-google-book-api-305n
-https://pakstech.com/blog/inquirer-js/
-https://www.freecodecamp.org/news/how-to-write-better-git-commit-messages/
-https://blog.kiradev.co/build-a-cli-using-nodejs#heading-cleaning-up-the-codebase-optional
--->
+- Run `npm t` or `npm run test` to run all tests in Jest in your terminal
+- Currently testing the pure JavaScript functions in `index.js` file
