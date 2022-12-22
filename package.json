@@ -28,6 +28,8 @@
   },
   "homepage": "https://github.com/fairyaksh/reading_list#readme",
   "dependencies": {
+    "boxen": "^7.0.1",
+    "chalk": "^5.2.0",
     "clear": "^0.1.0",
     "dotenv": "^16.0.3",
     "inquirer": "^9.1.4"
