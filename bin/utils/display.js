@@ -36,4 +36,20 @@ export const searchOptionActivated = async () => {
 
 }
 
+export const readExistingList = (username) => {
+    fs.readFile('users.json', 'utf8', async (err, data) => {
+        if (err) {
+            console.log(err);
+            return
+        }
+        else {
+            let jsonData = JSON.parse(data);
+            let getListForUsername = JSON.stringify(jsonData.users[username]) 
+            asyncPrompt(`Here's your current reading list, ${username}: ${getListForUsername}\n`);
+            const restartPrompt = asyncPrompt(`If you would like to go back and search for a book, please enter 0:\n`);
+            if (restartPrompt === '0'){
+                mainMenu()
+            }
+        }
+    })
 }
