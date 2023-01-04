@@ -1,5 +1,7 @@
 import { asyncPrompt, userName } from "../index.js"
 import { searchBookFromUserInput } from "./fetch.js";
+import { getAllBooksDetails, getFirstFiveBooks, addBookID, generateListFromFiveBooks, getUserChoiceOfBook, removeID } from "./dataParsing.js";
+import { checkForExistingUsername } from "./dataValidation.js";
 export const searchOptionActivated = async () => {
     // 1. Third prompt: ask for search term to fetch book
     console.clear();
