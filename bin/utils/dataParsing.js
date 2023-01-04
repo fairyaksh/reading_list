@@ -43,3 +43,8 @@ export const getUserChoiceOfBook = (arrOfFiveObj, userSelection) => {
     const chosenBookObj = arrOfFiveObj.find(item => item['id'] === userSelection);
     return chosenBookObj;
 }
+
+export const removeID = (bookObj) => {
+    const { id, ...newBookObject } = bookObj;
+    return newBookObject;
+}
