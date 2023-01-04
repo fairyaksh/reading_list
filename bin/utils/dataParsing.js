@@ -22,3 +22,17 @@ export const addBookID = (arrayOfObj) => {
     })
     return arrayOfObj;
 }
+export const generateListFromFiveBooks = (arrayOfObj) => {
+    return arrayOfObj.map(obj => {
+        const bookID = obj.id;
+        const title = obj.title;
+        let author = obj.author;
+        const publisher = obj.publisher;
+
+        const updatedAuthor = validateAuthor(obj, author);
+        const updatedPublisher = validatePublisher(obj, publisher);
+
+        const formattedStr = `\n${bookID}. "${title}". ${updatedAuthor}. ${(updatedPublisher)}`;
+        return formattedStr;
+    });
+}
