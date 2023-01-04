@@ -1,3 +1,4 @@
+import fs from "fs";
 import { validateAuthor, validatePublisher } from "./dataValidation.js";
 
 export const getAllBooksDetails = (data) => {

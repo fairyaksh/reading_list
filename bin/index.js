@@ -4,11 +4,8 @@
 process.removeAllListeners("warning"); 
 
 import * as dotenv from "dotenv";
-import inquirer from "inquirer";
-import clear from "clear";
-import fs from "fs";
-import chalk from 'chalk';
-import boxen from 'boxen';
+import * as asyncReadline from 'node:readline/promises';
+
 
 dotenv.config()
 

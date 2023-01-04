@@ -1,4 +1,7 @@
 import fs from "fs";
+import { asyncPrompt } from "../index.js";
+import { writeToDatabase } from "./dataParsing.js";
+
 export const validateAuthor = (bookObject, author) => {
     let checkAuthorExists = bookObject.hasOwnProperty("author");
     let updatedAuthor;
