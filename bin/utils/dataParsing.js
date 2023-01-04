@@ -14,3 +14,11 @@ export const getFirstFiveBooks = (bookDetails) => {
     const firstFive = bookDetails.slice(0, 5);
     return firstFive;
 }
+
+export const addBookID = (arrayOfObj) => {
+    arrayOfObj.map((obj, index) => {
+        const newIndex = index + 1;
+        obj['id'] = newIndex;
+    })
+    return arrayOfObj;
+}
