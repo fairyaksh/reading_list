@@ -26,6 +26,9 @@ export const searchOptionActivated = async () => {
     const choicePrompt = await asyncPrompt(`Here are the 5 books we found related to your search of "${searchTerm}".\nPlease select one book to save to your reading list by entering its number (1 - 5): \n ${listOfChoices.join('.')}\n`)
     const choiceAnswer = parseInt(choicePrompt); // converts string input 1 - 5 to number 1 - 5
 
+    console.clear();
+    const bookofChoice = getUserChoiceOfBook(fiveBooksWithID, choiceAnswer); // returns only the book obj user requested
+    const objWithoutID = removeID(bookofChoice);
 
 }
 
