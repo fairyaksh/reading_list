@@ -38,3 +38,8 @@ export const generateListFromFiveBooks = (arrayOfObj) => {
         return formattedStr;
     });
 }
+
+export const getUserChoiceOfBook = (arrOfFiveObj, userSelection) => {
+    const chosenBookObj = arrOfFiveObj.find(item => item['id'] === userSelection);
+    return chosenBookObj;
+}
