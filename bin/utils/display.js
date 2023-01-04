@@ -20,6 +20,10 @@ export const searchOptionActivated = async () => {
     // 6. Running validation check for properties  in the book object before returning str
     const listOfChoices = generateListFromFiveBooks(fiveBooksWithID); // array of strings
     
+    // 7. Fourth prompt: Display 5 & ask user to choose ONE to save
+    const choicePrompt = await asyncPrompt(`Here are the 5 books we found related to your search of "${searchTerm}".\nPlease select one book to save to your reading list by entering its number (1 - 5): \n ${listOfChoices.join('.')}\n`)
+    const choiceAnswer = parseInt(choicePrompt); // converts string input 1 - 5 to number 1 - 5
+
 
 }
 
