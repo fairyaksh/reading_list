@@ -16,23 +16,20 @@ export const cli = asyncReadline.createInterface({
 
 export const asyncPrompt = async (query) => await cli.question(query);
 
-}
-
-const getAllBooksDetails = (data) => {
-    const dataItems = data["items"];
-    const bookDetails = dataItems.map(items => {
-        const itemObject = items["volumeInfo"];
-        const itemTitle = itemObject["title"];
-        const itemAuthor = itemObject["authors"];
-        const itemPublisher = itemObject["publisher"];
-        return {"title": itemTitle, "author": itemAuthor, "publisher": itemPublisher};
-    })
-    return bookDetails;
-}
-
-export const getFirstFiveBooks = (book_details) => {
-    const firstFive = book_details.slice(0, 5);
-    return firstFive;
+const exitGreeting = (name) => {
+    cli.on("close", () => {
+        try {
+            if (name === "" || name === null) {
+                name = 'fellow bookworm';
+                console.log(`\nGoodbye, ${name}!`);
+            } else {
+                console.log(`\nGoodbye, ${name}!`);
+            }
+        } catch (error) {
+            console.log(`Oops! Something has gone wrong: (${error}). Please try again.`);
+        }
+        process.exit(0);
+    });
 }
 
 export const formatBooksInfo = (property) => {
