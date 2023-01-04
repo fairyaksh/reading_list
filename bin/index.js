@@ -32,26 +32,12 @@ const exitGreeting = (name) => {
     });
 }
 
-export const formatBooksInfo = (property) => {
-    return property.map(x => {
-        let author = x.author;
-        let checkAuthor = x.hasOwnProperty("author");
-        const title = x.title;
-        const publisher = x.publisher;
-        let checkPublisher = x.hasOwnProperty("publisher");
+console.clear();
 
-        const authorEdgeCases = _ => {
-            if (checkAuthor == false || author == undefined) {
-                return "Author: Unknown";
-            } else if (author.length <= 1) {
-                return author = author.join(", ");
-            } else {
-                const lastItem = author.pop();
-                const newAuthor = author.join(", ");
-                const newStr = `Written by ${newAuthor} and ${lastItem}`;
-                return newStr;
-            }
-        }
+// 1. First prompt: user's name
+export const userName = await asyncPrompt('Please enter your name 👉 ');
+exitGreeting(userName);
+console.clear();
 
         const checkPublisherExists = _ => {
             if (checkPublisher == false || publisher == null) {
