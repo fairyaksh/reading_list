@@ -48,3 +48,14 @@ export const removeID = (bookObj) => {
     const { id, ...newBookObject } = bookObj;
     return newBookObject;
 }
+
+export const writeToDatabase = (finalBookObj) => {
+    fs.writeFile('users.json', finalBookObj, (err) => {
+        if (err) {
+            console.log(err);
+        }
+        else {
+            console.log("\nSuccess!✨ You can now view all the saved books in your very own reading list.");
+        }
+    })
+}
