@@ -6,6 +6,7 @@ process.removeAllListeners("warning");
 import * as dotenv from "dotenv";
 import * as asyncReadline from 'node:readline/promises';
 
+import { allOptionPaths } from "./utils/menu.js";
 
 dotenv.config()
 
@@ -39,75 +40,19 @@ export const userName = await asyncPrompt('Please enter your name 👉 ');
 exitGreeting(userName);
 console.clear();
 
-        const checkPublisherExists = _ => {
-            if (checkPublisher == false || publisher == null) {
-                return "Publishing company: Unknown";
-            } else {
-                return `Published by ${publisher}`;
-            }
-        }
-
-        const formattedStr = `○ "${title}". ${authorEdgeCases()}. ${(checkPublisherExists())}.`;
-        return formattedStr;
-    });
+export const mainMenu = async () => {
+    // 2a. Second prompt: greeting & options for user
+    const optionInputAnswer = await asyncPrompt(`👋 Hi ${userName}! What would you like to do today?\n1. Search for a book to save\n2. View a reading list\n3. I changed my mind, I would like to exit..\n`);
+    allOptionPaths(optionInputAnswer, userName) // pass input chosen; triggers pathway in its resp. function
 }
+mainMenu()
 
-const createListFile = (usersName, usersChoice) => {
-    const fileName = `${usersName}'s reading list.txt`;
-    fs.appendFile(fileName, usersChoice + "\n", {flag: "a+"}, (err) => {
-        if (err) {
-            const beautified_error = boxen(chalk.bgRed("Something went wrong! 💥 Please try again."), {padding: 1, margin: 1, borderStyle: 'classic'});
-            console.log(beautified_error);            
-        }
-        else {
-            const beautified_success = boxen(chalk.green("Success!✨ You can now view all the saved books in your very own reading list."), {padding: 1, margin: 1, borderStyle: 'classic'});
-            console.log(beautified_success);
-        }
-    })
-}
-
-inquirer
-    .prompt([
-    {
-        type: "input",
-        name: "name",
-        message: "Please enter your name 👉"
+// Started attempting to create a function that allows user to go back to the main options menu so that they don't have to restart the app
+// However, this is where I started getting blocked and struggled to figure out why when this function was called in searchOptionActivated or readExistingList,
+// That function's prompt will be skipped and sent straight to the restartPrompt instead
+export const restartOption = async () => {
+    const restartPrompt = asyncPrompt(`If you would like to go back and search for a book, please enter 0:\n`);
+    if (restartPrompt === '0'){
+        mainMenu()
     }
-    ])
-    .then((answers) => {
-        clear();
-        const userName = answers.name;
-        inquirer
-            .prompt([
-            {
-                type: "input",
-                name: "search",
-                message: `👋 Hi ${userName}! Please provide a word related to the book you are looking for:`
-            }
-            ])
-        .then((answers) => {
-            clear();
-            const searchTerm = answers.search;
-            const searchTermObject = searchBookFromUserInput(searchTerm);
-            searchTermObject
-                .then(bookObj => getAllBooksDetails(bookObj))
-                .then(data => getFirstFiveBooks(data))
-                .then((response) => {
-                    clear();
-                    const formattedStr = formatBooksInfo(response);
-                    inquirer.prompt([
-                        {
-                            name: "selection",
-                            type: "list",
-                            message: `Here are the 5 books we found related to your search of "${searchTerm}". \n Please select one to save to your reading list:`,
-                            choices: formattedStr
-                        }
-                    ])
-                    .then(choices => {
-                        clear();
-                        const userChoice = choices.selection;
-                        createListFile(userName, userChoice);
-                    })
-                })
-            })
-        })
+}
