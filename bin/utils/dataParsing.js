@@ -1,3 +1,5 @@
+import { validateAuthor, validatePublisher } from "./dataValidation.js";
+
 export const getAllBooksDetails = (data) => {
     const dataItems = data["items"];
     const bookDetails = dataItems.map(items => {
