@@ -1,3 +1,5 @@
+import { asyncPrompt, userName } from "../index.js"
+import { searchBookFromUserInput } from "./fetch.js";
 export const searchOptionActivated = async () => {
     // 1. Third prompt: ask for search term to fetch book
     console.clear();
