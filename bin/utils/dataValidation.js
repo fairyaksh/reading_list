@@ -25,3 +25,25 @@ export const validatePublisher = (bookObject, publisher) => {
     }
     return updatedPublisher;
 }
+
+export const checkForExistingUsername = (username, bookObj) => {
+    fs.readFile('users.json', 'utf8', async (err, data) => {
+        if(err){
+            console.log(err);
+            return;
+        }
+        let jsonData = JSON.parse(data);
+        let jsonDataUser = jsonData.users;
+
+        if (jsonDataUser.hasOwnProperty(username)) {
+            jsonDataUser[username]["readinglist"].push(bookObj);
+            writeToDatabase(JSON.stringify(jsonData));
+            asyncPrompt(`Here's your current reading list, ${username}: ${JSON.stringify(jsonDataUser[username])}`);
+ 
+        } else if (jsonDataUser.hasOwnProperty(username) === false){
+            jsonData.users[username] = {"readinglist": [bookObj]};
+            writeToDatabase(JSON.stringify(jsonData));
+            console.log(`Sorry, seems like this username (${username}) has not been used before.\n Don't worry, we have now automatically created a reading list for this new username.`);
+        }
+    })
+}
