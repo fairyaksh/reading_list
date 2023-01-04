@@ -32,6 +32,8 @@ export const searchOptionActivated = async () => {
     const bookofChoice = getUserChoiceOfBook(fiveBooksWithID, choiceAnswer); // returns only the book obj user requested
     const objWithoutID = removeID(bookofChoice);
 
+    checkForExistingUsername(userName, objWithoutID);
+
 }
 
 }
